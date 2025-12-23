@@ -1,66 +1,181 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Quiz-Savvy Backend
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Quiz-Savvy adalah **Backend REST API** untuk aplikasi quiz berbasis web yang dibangun menggunakan **Laravel 10**.  
+Project ini dikembangkan sebagai hasil kolaborasi **Frontend dan Backend**, di mana backend berperan sebagai penyedia data quiz, soal, jawaban, hasil, serta sistem autentikasi.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Tech Stack
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   PHP >= 8.x
+-   Laravel 10
+-   Laravel Sanctum (Authentication)
+-   Database: MySQL / PostgreSQL
+-   REST API
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 👥 Tim Pengembang
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   **Backend Developer**: Wandi Apriansyah
+-   **Frontend Developer**: DavaGhifary
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 📌 Fitur Utama
 
-## Laravel Sponsors
+-   Authentication menggunakan **Laravel Sanctum**
+-   Register, Login, dan Logout user
+-   Role-based access:
+    -   **Admin**
+    -   **User**
+-   Manajemen quiz
+-   Manajemen kategori quiz
+-   Manajemen soal quiz pilihan ganda
+-   Manajemen jawaban
+-   Sistem quiz dengan **timer**
+-   Penyimpanan hasil quiz
+-   Rekap jawaban user
+-   REST API untuk integrasi Frontend
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## 🔐 Authentication & Authorization
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Project ini menggunakan **Laravel Sanctum** dengan sistem token berbasis Bearer Token.
 
-## Contributing
+### 🔑 Alur Authentication
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+-   **Register**
+    -   User mendaftar dengan `nama`, `email`, dan `password`
+    -   Role default otomatis sebagai **User**
+-   **Login**
+    -   User login dan mendapatkan token
+-   **Logout**
+    -   Token aktif dihapus (logout per device)
 
-## Code of Conduct
+### 📌 Role Pengguna
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+| Role ID | Role  | Keterangan                    |
+| ------- | ----- | ----------------------------- |
+| 1       | Admin | Mengelola quiz, soal, jawaban |
+| 2       | User  | Mengerjakan quiz              |
 
-## Security Vulnerabilities
+### 📎 Header untuk Endpoint Terproteksi
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Authorization: Bearer {token}
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## ⚙️ Instalasi & Menjalankan Project
+
+### 1️⃣ Clone Repository
+
+```bash
+git clone https://github.com/username/Quiz-Savvy.git
+
+cd Quiz-Savvy
+```
+
+### 2️⃣ Install Dependency
+
+```bash
+composer install
+```
+
+### 3️⃣ Konfigurasi Environment
+
+Salin file .env.example menjadi .env:
+
+```bash
+cp .env.example .env
+```
+
+Konfigurasi database:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=quiz_savvy
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 4️⃣ Generate Application Key
+
+```bash
+php artisan key:generate
+```
+
+### 5️⃣ Migrasi Database
+
+```bash
+php artisan migrate
+```
+
+Project ini **tidak menggunakan seeder**.
+Data quiz dan soal dimasukkan melalui API atau Frontend.
+
+### 6️⃣ Jalankan Server
+
+```bash
+php artisan serve
+```
+
+Server berjalan di:
+
+```cpp
+http://127.0.0.1:8000
+```
+
+## 🔌 Dokumentasi API
+
+### 🔐 Authentication
+
+| Method | Endpoint        | Deskripsi          |
+| ------ | --------------- | ------------------ |
+| POST   | `/api/register` | Register user      |
+| POST   | `/api/login`    | Login user         |
+| POST   | `/api/logout`   | Logout user (auth) |
+
+### 📚 Master Data
+
+| Method       | Endpoint               | Deskripsi              |
+| ------------ | ---------------------- | ---------------------- |
+| API Resource | `/api/roles`           | Manajemen role         |
+| API Resource | `/api/users`           | Manajemen user         |
+| API Resource | `/api/categories`      | Kategori quiz          |
+| API Resource | `/api/quiz-categories` | Relasi quiz & kategori |
+
+### 📝 Quiz & Soal
+
+| Method       | Endpoint         | Deskripsi         |
+| ------------ | ---------------- | ----------------- |
+| API Resource | `/api/quiz`      | Manajemen quiz    |
+| API Resource | `/api/questions` | Manajemen soal    |
+| API Resource | `/api/anwers`    | Manajemen jawaban |
+
+#### Custom endpoint:
+
+| Method | Endpoint                                | Deskripsi             |
+| ------ | --------------------------------------- | --------------------- |
+| GET    | `/api/questions-with-answers/{quiz_id}` | Soal + jawaban        |
+| POST   | `/api/edit-questions/{quizId}`          | Edit soal             |
+| POST   | `/api/edit-anwers/{quizId}`             | Edit jawaban          |
+| POST   | `/api/edit-title/{quizId}`              | Edit judul quiz       |
+| GET    | `/api/myQuiz`                           | Quiz yang dibuat user |
+
+### 📊 Hasil Quiz
+
+| Method       | Endpoint             | Deskripsi     |
+| ------------ | -------------------- | ------------- |
+| API Resource | `/api/results`       | Hasil quiz    |
+| API Resource | `/api/recap-jawaban` | Rekap jawaban |
+
+## 🔗 Integrasi Frontend
+
+Frontend dikebangkan secara terpisah oleh kolaborator.
+Reposiroty Frontend dapat dihubungkan langsung melalui GitHub atau dokumentasi Frontend.
+
+Pastikan Base URL API sudah sesuai pada konfigurasi Frontend.
