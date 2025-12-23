@@ -19,6 +19,7 @@ Project ini dikembangkan sebagai hasil kolaborasi **Frontend dan Backend**, di m
 
 -   **Backend Developer**: Wandi Apriansyah
 -   **Frontend Developer**: DavaGhifary
+- 👉 Repository Frontend: https://github.com/DavaGhifary/quiz-savvy-fe
 
 ---
 
